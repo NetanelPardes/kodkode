@@ -62,69 +62,70 @@
 
 # handle_purchase("test@gmail.com", "Laptop", 100, 20, 10)
 
-#ex3
-def student_name_propriety_check(new_name):
-    if not new_name or len(new_name) < 2:
-        print("Error: invalid name")
-        return False
-    return True
+# #ex3
+# def student_name_propriety_check(new_name):
+#     if not new_name or len(new_name) < 2:
+#         print("Error: invalid name")
+#         return False
+#     return True
 
-def student_grade_propriety_check(new_grade):
-    if new_grade < 0 or new_grade > 100:
-        print("Error: grade must be 0-100")
-        return False
-    return True
+# def student_grade_propriety_check(new_grade):
+#     if new_grade < 0 or new_grade > 100:
+#         print("Error: grade must be 0-100")
+#         return False
+#     return True
 
-def calculating_statistics (grades):
-    total = sum(grades)
-    average = total / len(grades)
-    top_count = sum(1 for grade in grades if grade >= 90)
-    failing_count = sum(1 for grade in grades if grade < 56)
+# def calculating_statistics (grades):
+#     total = sum(grades)
+#     average = total / len(grades)
+#     top_count = sum(1 for grade in grades if grade >= 90)
+#     failing_count = sum(1 for grade in grades if grade < 56)
 
-    return  average, top_count,failing_count
+#     return  average, top_count,failing_count
 
-def report_Print(names,grades, statistics_calc):
-    average, top_count,failing_count = statistics_calc
-    print("=== Student Report ===")
-    for i in range(len(names)):
-        print(f"{names[i]}: {grades[i]}")
-    print(f"Average: {average:.1f}")
-    print(f"Top students: {top_count}")
-    print(f"Failing: {failing_count}\n")
+# def report_Print(names,grades, statistics_calc):
+#     average, top_count,failing_count = statistics_calc
+#     print("=== Student Report ===")
+#     for i in range(len(names)):
+#         print(f"{names[i]}: {grades[i]}")
 
-def save_students_to_file(names,grades):
-    with open("students.txt", "w") as f:
-        for i in range(len(names)):
-            f.write(f"{names[i]},{grades[i]}\n")
+#     print(f"Average: {average:.1f}")
+#     print(f"Top students: {top_count}")
+#     print(f"Failing: {failing_count}")
 
-def add_new_student(names, grades, new_name, new_grade):
-    names.append(new_name)
-    grades.append(new_grade)
-    return names, grades
+# def save_students_to_file(names,grades):
+#     with open("students.txt", "w") as f:
+#         for i in range(len(names)):
+#             f.write(f"{names[i]},{grades[i]}\n")
+
+# def add_new_student(names, grades, new_name, new_grade):
+#     names.append(new_name)
+#     grades.append(new_grade)
+#     return names, grades
     
 
 
-def manage_students(names, grades, new_name, new_grade):
-    # validation
-    if student_name_propriety_check(new_name) and student_grade_propriety_check(new_grade):
+# def manage_students(names, grades, new_name, new_grade):
+#     # validation
+#     if student_name_propriety_check(new_name) and student_grade_propriety_check(new_grade):
         
-        # add student
-        names, grades = add_new_student(names, grades, new_name, new_grade)
+#         # add student
+#         names, grades = add_new_student(names, grades, new_name, new_grade)
 
-        # calculate stats
-        statistics_calc = calculating_statistics(grades)
+#         # calculate stats
+#         statistics_calc = calculating_statistics(grades)
         
-        # print report
-        report_Print(names,grades, statistics_calc)
-        
-
-        # save to file
-        save_students_to_file(names,grades)
+#         # print report
+#         report_Print(names,grades, statistics_calc)
         
 
-        return names, grades
+#         # save to file
+#         save_students_to_file(names,grades)
+        
+
+#         return names, grades
     
-names = ["David", "Sara", "Moshe"]
-grades = [95, 72, 44]
+# names = ["David", "Sara", "Moshe"]
+# grades = [95, 72, 44]
 
-manage_students(names, grades, "Noa", 88)
+# manage_students(names, grades, "Noa", 88)
