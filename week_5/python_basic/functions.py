@@ -133,16 +133,15 @@
 # original = [1, 2, 3, 5, 4]
 # print(reverse_list(original))
 
-#ex11
-
-def remove_duplicates_keep_order(list):
-    result = []
-    for num in list:
-        if num not in result:
-            result.append(num)
-    return result
+# #ex11
+# def remove_duplicates_keep_order(list):
+#     result = []
+#     for num in list:
+#         if num not in result:
+#             result.append(num)
+#     return result
 
    
-#tests
-items = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
-print(remove_duplicates_keep_order(items))
+# #tests
+# items = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3]
+# print(remove_duplicates_keep_order(items))
