@@ -279,44 +279,54 @@
 
 
 
-#ex7
-TAX_RATE = 0.17
+# #ex7
+# TAX_RATE = 0.17
 
 
-def process_cart(prices, quantities, user_type):
-    total = 0
+# def process_cart(prices, quantities, user_type):
+#     total = 0
 
-    for i in range(len(prices)):
-        price = prices[i]
-        quantity = quantities[i]
-        total += price * quantity
+#     for i in range(len(prices)):
+#         price = prices[i]
+#         quantity = quantities[i]
+#         total += price * quantity
 
-    # Tax is added before discount because the store calculates discount on final taxed price
-    total += total * TAX_RATE
+#     # Tax is added before discount because the store calculates discount on final taxed price
+#     total += total * TAX_RATE
 
-    # Different user types receive different loyalty discounts
-    if user_type == "premium":
-        total *= 0.9
-    elif user_type == "vip":
-        total *= 0.8
+#     # Different user types receive different loyalty discounts
+#     if user_type == "premium":
+#         total *= 0.9
+#     elif user_type == "vip":
+#         total *= 0.8
 
-    # Shipping becomes cheaper for larger orders to encourage bigger purchases
-    if total > 500:
-        shipping = 0
-    elif total > 200:
-        shipping = 25
-    else:
-        shipping = 50
+#     # Shipping becomes cheaper for larger orders to encourage bigger purchases
+#     if total > 500:
+#         shipping = 0
+#     elif total > 200:
+#         shipping = 25
+#     else:
+#         shipping = 50
 
-    total += shipping
+#     total += shipping
 
-    return total
+#     return total
 
-#tests
-prices = [100, 50, 20]
-quantities = [2, 3, 5]
+# #tests
+# prices = [100, 50, 20]
+# quantities = [2, 3, 5]
 
-print(process_cart(prices, quantities, "regular"))
-print(process_cart(prices, quantities, "premium"))
-print(process_cart(prices, quantities, "vip"))
+# print(process_cart(prices, quantities, "regular"))
+# print(process_cart(prices, quantities, "premium"))
+# print(process_cart(prices, quantities, "vip"))
+
+def f():
+    try:
+        return "try"
+    finally:
+        print("finally")
+
+print(f())
+
+
 
