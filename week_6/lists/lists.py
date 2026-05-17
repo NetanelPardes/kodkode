@@ -79,8 +79,8 @@
 
 #ex8
 def otated_to_the_right_by_k(my_list , k):
-    k = k % len(my_list)
-    return my_list[-k:] + my_list[:-k]
+    
+    return my_list[-( k % len(my_list)):] + my_list[:-( k % len(my_list))]
 
 print(otated_to_the_right_by_k( [1, 2, 3, 4, 5],2))
 print(otated_to_the_right_by_k( [1, 2, 3, 4, 5],7))
