@@ -320,13 +320,7 @@
 # print(process_cart(prices, quantities, "premium"))
 # print(process_cart(prices, quantities, "vip"))
 
-def f():
-    try:
-        return "try"
-    finally:
-        print("finally")
 
-print(f())
 
 
 

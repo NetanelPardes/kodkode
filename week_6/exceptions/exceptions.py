@@ -102,12 +102,12 @@ import random
 
 # print(count_errors([func1, func2, func3, func4]))
 
-#ex8
-def load_config(path):
-    with open(path,'r',encoding='UTF-8') as f1:
-        try:
-            return int(f1.readline().strip())
-        except Exception as e:
-            raise RuntimeError("failed to load config") from e
+# #ex8
+# def load_config(path):
+#     with open(path,'r',encoding='UTF-8') as f1:
+#         try:
+#             return int(f1.readline().strip())
+#         except Exception as e:
+#             raise RuntimeError("failed to load config") from e
 
-print(load_config('text.txt'))
+# print(load_config('text.txt'))
