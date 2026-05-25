@@ -1,0 +1,82 @@
+2026-05-25 17:10:04,611 | INFO | payments | starting payment for 1234
+2026-05-25 17:10:04,612 | INFO | payments | payment done for 1234
+2026-05-25 17:10:04,612 | INFO | payments | starting payment for 1234
+2026-05-25 17:10:04,612 | WARNING | payments | Your place is about to be full.
+2026-05-25 17:10:04,612 | INFO | payments | payment done for 1234
+2026-05-25 17:10:04,612 | INFO | payments | starting payment for 1234
+2026-05-25 17:10:04,613 | ERROR | payments | dont have
+2026-05-25 17:10:04,613 | INFO | payments | payment done for 1234
+2026-05-25 17:10:17,526 | INFO | payments | starting payment for 1234
+2026-05-25 17:10:17,527 | INFO | payments | payment done for 1234
+2026-05-25 17:10:17,527 | INFO | payments | starting payment for 1234
+2026-05-25 17:10:17,528 | WARNING | payments | Your place is about to be full.
+2026-05-25 17:10:17,528 | INFO | payments | payment done for 1234
+2026-05-25 17:10:17,528 | INFO | payments | starting payment for 1234
+2026-05-25 17:10:17,528 | ERROR | payments | dont have
+2026-05-25 17:10:17,528 | INFO | payments | payment done for 1234
+2026-05-25 17:19:56,900 | INFO | payments | starting payment for 1234
+2026-05-25 17:19:56,901 | INFO | payments | payment done for 1234
+2026-05-25 17:19:56,901 | INFO | payments | starting payment for 1234
+2026-05-25 17:19:56,901 | WARNING | payments | Your place is about to be full.
+2026-05-25 17:19:56,901 | INFO | payments | payment done for 1234
+2026-05-25 17:19:56,901 | INFO | payments | starting payment for 1234
+2026-05-25 17:19:56,901 | ERROR | payments | dont have
+2026-05-25 17:19:56,901 | INFO | payments | payment done for 1234
+2026-05-25 17:19:56,902 | INFO | payments | successful file open
+2026-05-25 17:20:52,183 | INFO | payments | starting payment for 1234
+2026-05-25 17:20:52,184 | INFO | payments | payment done for 1234
+2026-05-25 17:20:52,184 | INFO | payments | starting payment for 1234
+2026-05-25 17:20:52,184 | WARNING | payments | Your place is about to be full.
+2026-05-25 17:20:52,184 | INFO | payments | payment done for 1234
+2026-05-25 17:20:52,184 | INFO | payments | starting payment for 1234
+2026-05-25 17:20:52,184 | ERROR | payments | dont have
+2026-05-25 17:20:52,184 | INFO | payments | payment done for 1234
+2026-05-25 17:20:52,185 | INFO | payments | successful file open
+2026-05-25 17:21:31,468 | INFO | payments | successful file open
+2026-05-25 17:21:40,606 | INFO | payments | successful file open
+2026-05-25 17:22:00,679 | INFO | payments | successful file open
+2026-05-25 17:22:00,680 | ERROR | payments | the file not found
+Traceback (most recent call last):
+  File "c:\Users\sendi\Desktop\kodkod_git\week_7\logging\logging_ex.py", line 47, in read_config
+    with open(filepath) as f:
+         ~~~~^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'app1.log'
+2026-05-25 17:22:46,329 | INFO | payments | successful file open
+2026-05-25 17:22:46,329 | ERROR | payments | the file not found
+Traceback (most recent call last):
+  File "c:\Users\sendi\Desktop\kodkod_git\week_7\logging\logging_ex.py", line 47, in read_config
+    with open(filepath) as f:
+         ~~~~^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'app1.log'
+2026-05-25 17:23:49,059 | INFO | __main__ | successful file open
+2026-05-25 17:23:49,059 | ERROR | __main__ | the file not found
+Traceback (most recent call last):
+  File "c:\Users\sendi\Desktop\kodkod_git\week_7\logging\logging_ex.py", line 47, in read_config
+    with open(filepath) as f:
+         ~~~~^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'app1.log'
+2026-05-25 17:36:31,748 | INFO | __main__ | register user to the system
+2026-05-25 17:36:31,748 | ERROR | __main__ | This age is illegal.
+2026-05-25 17:36:31,748 | INFO | __main__ | register user to the system
+2026-05-25 17:36:31,748 | INFO | __main__ | ok email=sendi8475@gamil.com has password=True
+2026-05-25 17:36:31,748 | INFO | __main__ | Login completed.
+2026-05-25 17:37:54,008 | INFO | __main__ | register user to the system
+2026-05-25 17:37:54,009 | ERROR | __main__ | This age is illegal.
+2026-05-25 17:37:54,009 | INFO | __main__ | register user to the system
+2026-05-25 17:37:54,009 | INFO | __main__ | ok | email=sendi8475@gamil.com | has password=True
+2026-05-25 17:37:54,009 | INFO | __main__ | Login completed.
+2026-05-25 17:38:09,238 | INFO | __main__ | register user to the system
+2026-05-25 17:38:09,238 | ERROR | __main__ | This age is illegal.
+2026-05-25 17:38:09,239 | INFO | __main__ | register user to the system
+2026-05-25 17:38:09,239 | INFO | __main__ | ok | email = sendi8475@gamil.com | has password = True
+2026-05-25 17:38:09,239 | INFO | __main__ | Login completed.
+2026-05-25 17:38:42,867 | INFO | __main__ | register user to the system
+2026-05-25 17:38:42,868 | ERROR | __main__ | This age is illegal.
+2026-05-25 17:38:42,868 | INFO | __main__ | register user to the system
+2026-05-25 17:38:42,868 | INFO | __main__ | ok | email = sendi8475@gamil.com | has password = True
+2026-05-25 17:38:42,868 | INFO | __main__ | Login completed.
+2026-05-25 17:39:31,500 | INFO | __main__ | register user to the system
+2026-05-25 17:39:31,500 | ERROR | __main__ | This age is illegal.
+2026-05-25 17:39:31,500 | INFO | __main__ | register user to the system
+2026-05-25 17:39:31,500 | INFO | __main__ | ok | email = sendi8475@gamil.com | has password = True
+2026-05-25 17:39:31,501 | INFO | __main__ | Login completed.
