@@ -27,7 +27,6 @@ def load_tasks(filename):
         print(f"{e}: sorry file not exist")
         return []
 
-
 def save_tasks(filename, tasks):
     """
     שומרת את רשימת המשימות לקובץ.
@@ -38,7 +37,6 @@ def save_tasks(filename, tasks):
     with open (filename , 'w' , encoding="UTF-8") as my_file:
         for line in tasks:
             my_file.write(f"{line['id']}|{line['status']}|{line['desc']}\n")
-
 
 def add_task(filename, description):
     """
@@ -51,7 +49,6 @@ def add_task(filename, description):
 
     with open (filename , 'a' , encoding="UTF-8") as my_file:
         my_file.write(f"{n+1}|PENDING|{description}\n")
-
 
 def complete_task(filename, task_id):
     """
@@ -73,7 +70,6 @@ def complete_task(filename, task_id):
     
     save_tasks(filename, my_list_task)
 
-
 def list_tasks(filename):
     """
     מציגה את כל המשימות בפורמט מסודר.
@@ -85,10 +81,12 @@ def list_tasks(filename):
     my_list_task = load_tasks(filename)
 
     for task in my_list_task:
-        print(f"{'[ ]' if task['status'] == "PENDING" else '[✓]'} {task['id']} | {task['desc']}")
-
+        print(f"{'[ ]' if task['status'] == 'PENDING' else '[✓]'} {task['id']} | {task['desc']}")
 
 def Deleting_task(filename, task_id):
+    """
+    Gets the task list and removes the task we want to delete
+    """
     my_list = load_tasks(filename)
     new_list = []
     for line in my_list:
@@ -97,18 +95,27 @@ def Deleting_task(filename, task_id):
     save_tasks(filename , new_list)
 
 def filter_tasks_by_status(filename, status):
+    """
+    Filters the tasks and shows us only the tasks we want (completed or still)
+    """
     my_list = load_tasks(filename)
     for line in my_list:
         if line['status'] == status:
             print(f"{line['id']} | {line['desc']}")
 
 def search_tasks(filename , task_id):
+    """
+    Receives the list and counts and returns the specific task we are looking for
+    """
     my_list = load_tasks(filename)
     for line in my_list:
         if line['id'] == task_id:
             print(f"{line['id']} | {line['status']} | {line['desc']}")
 
 def show_statistics(filename):
+    """
+    Goes through the list and checks how many tasks have been completed and how many have not.
+    """
     finish = 0
     not_finish = 0
     my_list = load_tasks(filename)
@@ -118,6 +125,15 @@ def show_statistics(filename):
         else:
             not_finish += 1
     print(f"Done: {finish} \nNOT DONE: {not_finish}")
+
+def backup_tasks(filename , backup):
+    """
+    Backs up the list to a backup list every time we run it
+    """
+    my_list = load_tasks(filename)
+
+    save_tasks(backup , my_list)
+
 
 def main():
     FILENAME = "week_7//todo_list_project//tasks.txt"
@@ -131,6 +147,7 @@ def main():
         print("5. Filter by status")
         print("6. Search task")
         print("7. Show statistics")
+        print("8. backup")
         print("9. Exit")
 
         choice = input("Choice: ")
@@ -162,13 +179,16 @@ def main():
             filter_tasks_by_status(FILENAME, status)
 
         elif choice == "6":
-            keyword = input("Search keyword: ")
+            keyword = input("Search key: ")
             search_tasks(FILENAME, keyword)
 
         elif choice == "7":
             show_statistics(FILENAME)
 
         elif choice == "8":
+            backup_tasks(FILENAME , "backup_tasks.txt")
+            
+        elif choice == "9":
             print("Goodbye!")
             break
 
