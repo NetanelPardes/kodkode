@@ -1,0 +1,102 @@
+1|PENDING|Review Python functions
+2|PENDING|Practice reading files
+3|PENDING|Practice writing files
+4|DONE|Fix indentation errors
+5|PENDING|Create a main menu
+6|PENDING|Test the add task option
+7|PENDING|Test the list tasks option
+8|DONE|Test the complete task option
+9|PENDING|Handle missing files
+10|PENDING|Remove extra spaces from input
+11|PENDING|Check user choice validation
+12|DONE|Add comments to the code
+13|PENDING|Write clean variable names
+14|PENDING|Refactor repeated code
+15|PENDING|Create a backup file
+16|DONE|Read project instructions
+17|PENDING|Plan the project structure
+18|PENDING|Create the project folder
+19|PENDING|Create the main Python file
+20|DONE|Create the tasks text file
+21|PENDING|Run the program from terminal
+22|PENDING|Fix syntax errors
+23|PENDING|Fix string quotation errors
+24|DONE|Check file encoding
+25|PENDING|Practice using dictionaries
+26|PENDING|Practice using lists
+27|PENDING|Practice using loops
+28|DONE|Practice using conditions
+29|PENDING|Practice using try except
+30|PENDING|Practice using functions
+31|PENDING|Clean old test files
+32|DONE|Write a simple README
+33|PENDING|Add project title
+34|PENDING|Add usage instructions
+35|PENDING|Add example tasks
+36|DONE|Improve error messages
+37|PENDING|Validate task id input
+38|PENDING|Prevent empty descriptions
+39|PENDING|Show message when no tasks exist
+40|DONE|Sort tasks by id
+41|PENDING|Count completed tasks
+42|PENDING|Count pending tasks
+43|PENDING|Print task summary
+44|DONE|Add a search option
+45|PENDING|Add a delete option
+46|PENDING|Add an edit option
+47|PENDING|Add a priority field
+48|DONE|Add a due date field
+49|PENDING|Add task categories
+50|PENDING|Add color in terminal
+51|PENDING|Check completed task display
+52|DONE|Check pending task display
+53|PENDING|Use constants for status names
+54|PENDING|Create helper functions
+55|PENDING|Test with an empty file
+56|DONE|Test with one task
+57|PENDING|Test with many tasks
+58|PENDING|Test invalid menu choices
+59|PENDING|Test invalid task numbers
+60|DONE|Test duplicate task ids
+61|PENDING|Make the code more readable
+62|PENDING|Add docstrings in English
+63|PENDING|Remove unused variables
+64|DONE|Remove unused imports
+65|PENDING|Check spelling in comments
+66|PENDING|Check spelling in messages
+67|PENDING|Use snake case names
+68|DONE|Keep functions short
+69|PENDING|Separate logic from printing
+70|PENDING|Save tasks after changes
+71|PENDING|Load tasks before changes
+72|DONE|Check if file closes correctly
+73|PENDING|Use with open properly
+74|PENDING|Run the program again
+75|PENDING|Check that tasks stay saved
+76|DONE|Mark task 10 as done
+77|PENDING|Mark task 25 as done
+78|PENDING|Mark task 50 as done
+79|PENDING|Review completed tasks
+80|DONE|Review pending tasks
+81|PENDING|Prepare for code review
+82|PENDING|Ask for feedback
+83|PENDING|Improve the menu design
+84|DONE|Add clear separators
+85|PENDING|Add project version
+86|PENDING|Add author name
+87|PENDING|Create a test plan
+88|DONE|Write manual test cases
+89|PENDING|Try the program with Hebrew text
+90|PENDING|Try the program with English text
+91|PENDING|Check long task descriptions
+92|DONE|Check short task descriptions
+93|PENDING|Check special characters
+94|PENDING|Check empty lines in file
+95|PENDING|Skip broken lines safely
+96|DONE|Print helpful instructions
+97|PENDING|Update the README file
+98|PENDING|Commit changes to Git
+99|PENDING|Push project to GitHub
+100|DONE|Review the final project
+101|PENDING|Submit the assignment
+102|PENDING|na

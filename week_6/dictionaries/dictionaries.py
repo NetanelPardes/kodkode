@@ -88,16 +88,16 @@
 
 # print(common_keys({"a": 1, "b": 2, "c": 3}, {"b": 9, "c": 8, "d": 7}))
 
-#ex10
-def most_frequent_value(my_dict):
-    new_dict ={}
-    for val in my_dict.values():
-        if val not in new_dict:
-            new_dict[val ] = 1
-        else:
-            new_dict[val] +=1
-    my_max = max(new_dict.values())
-    for key,val in new_dict.items():
-        if val == my_max:
-            return key
-print(most_frequent_value({"a": 1, "b": 2, "c": 1, "d": 3, "e": 1}))
+# #ex10
+# def most_frequent_value(my_dict):
+#     new_dict ={}
+#     for val in my_dict.values():
+#         if val not in new_dict:
+#             new_dict[val ] = 1
+#         else:
+#             new_dict[val] +=1
+#     my_max = max(new_dict.values())
+#     for key,val in new_dict.items():
+#         if val == my_max:
+#             return key
+# print(most_frequent_value({"a": 1, "b": 2, "c": 1, "d": 3, "e": 1}))

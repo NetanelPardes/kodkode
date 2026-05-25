@@ -73,8 +73,8 @@
 # print(pair_sum_exists( [3, 1, 4, 7, 2],6))
 # print(pair_sum_exists( [3, 1, 4, 7, 2],100))
 
-#ex10
-def symmetric_difference_without_operators(my_list1,my_list2):
-    return list((set(my_list1)|set(my_list2)) - (set(my_list1)&set(my_list2)))
+# #ex10
+# def symmetric_difference_without_operators(my_list1,my_list2):
+#     return list((set(my_list1)|set(my_list2)) - (set(my_list1)&set(my_list2)))
 
-print(symmetric_difference_without_operators( [1, 2, 3, 4], [3, 4, 5, 6]))
+# print(symmetric_difference_without_operators( [1, 2, 3, 4], [3, 4, 5, 6]))

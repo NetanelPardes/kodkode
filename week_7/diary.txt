@@ -1,0 +1,4 @@
+24/05/2026 16:10 I started learning Python today.
+24/05/2026 16:10 I practiced writing files with open().
+24/05/2026 16:10 I created my first diary file successfully!
+24/05/2026 16:10 : Today I reviewed everything I learned this week .

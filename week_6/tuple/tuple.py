@@ -88,23 +88,21 @@
 
 # print(frequency_table( ("a", "b", "a", "c", "b", "a")))
 
-#ex10
-def rotate_a_tuple(my_tuple , k):
-    k = k % len(my_tuple)
-    new_tuple = []
-    new_tuple = my_tuple[-(k):] + my_tuple[:-(k)]
-    return tuple(new_tuple)
+# #ex10
+# def rotate_a_tuple(my_tuple , k):
+#     k = k % len(my_tuple)
+#     new_tuple = []
+#     new_tuple = my_tuple[-(k):] + my_tuple[:-(k)]
+#     return tuple(new_tuple)
 
-print(rotate_a_tuple((1, 2, 3, 4, 5),0))
-print(rotate_a_tuple((1, 2, 3, 4, 5),1))
-print(rotate_a_tuple((1, 2, 3, 4, 5),2))
-print(rotate_a_tuple((1, 2, 3, 4, 5),3))
-print(rotate_a_tuple((1, 2, 3, 4, 5),4))
-print(rotate_a_tuple((1, 2, 3, 4, 5),5))
-print(rotate_a_tuple((1, 2, 3, 4, 5),6))
-print(rotate_a_tuple((1, 2, 3, 4, 5),7))
-print(rotate_a_tuple((1, 2, 3, 4, 5),8))
-print(rotate_a_tuple((1, 2, 3, 4, 5),9))
-print(rotate_a_tuple((1, 2, 3, 4, 5),10))
-
-
+# print(rotate_a_tuple((1, 2, 3, 4, 5),0))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),1))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),2))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),3))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),4))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),5))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),6))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),7))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),8))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),9))
+# print(rotate_a_tuple((1, 2, 3, 4, 5),10))
