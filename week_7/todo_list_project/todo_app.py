@@ -85,11 +85,39 @@ def list_tasks(filename):
     my_list_task = load_tasks(filename)
 
     for task in my_list_task:
-        if task['status'] == "PENDING":
-            print(f"[ ] {task['id']} | {task['desc']}")
-        else: 
-            print(f"[✓] {task['id']} | {task['desc']}")
+        print(f"{'[ ]' if task['status'] == "PENDING" else '[✓]'} {task['id']} | {task['desc']}")
 
+
+def Deleting_task(filename, task_id):
+    my_list = load_tasks(filename)
+    new_list = []
+    for line in my_list:
+        if line['id'] != task_id:
+            new_list.append(line)
+    save_tasks(filename , new_list)
+
+def filter_tasks_by_status(filename, status):
+    my_list = load_tasks(filename)
+    for line in my_list:
+        if line['status'] == status:
+            print(f"{line['id']} | {line['desc']}")
+
+def search_tasks(filename , task_id):
+    my_list = load_tasks(filename)
+    for line in my_list:
+        if line['id'] == task_id:
+            print(f"{line['id']} | {line['status']} | {line['desc']}")
+
+def show_statistics(filename):
+    finish = 0
+    not_finish = 0
+    my_list = load_tasks(filename)
+    for line in my_list:
+        if line['status'] == 'DONE':
+            finish += 1 
+        else:
+            not_finish += 1
+    print(f"Done: {finish} \nNOT DONE: {not_finish}")
 
 def main():
     FILENAME = "week_7//todo_list_project//tasks.txt"
@@ -99,7 +127,11 @@ def main():
         print("1. Show tasks")
         print("2. Add task")
         print("3. Mark as completed")
-        print("4. Exit")
+        print("4. Delete task")
+        print("5. Filter by status")
+        print("6. Search task")
+        print("7. Show statistics")
+        print("9. Exit")
 
         choice = input("Choice: ")
 
@@ -117,9 +149,26 @@ def main():
                 complete_task(FILENAME, task_id)
             except ValueError as e:
                 print(f"{e} : this is not a number")
-            
 
         elif choice == "4":
+            try:
+                task_id = int(input("Task number: "))
+                Deleting_task(FILENAME, task_id)
+            except ValueError as e:
+                print(f"{e} : this is not a number")
+
+        elif choice == "5":
+            status = (input("Enter status PENDING/DONE: ")).upper()
+            filter_tasks_by_status(FILENAME, status)
+
+        elif choice == "6":
+            keyword = input("Search keyword: ")
+            search_tasks(FILENAME, keyword)
+
+        elif choice == "7":
+            show_statistics(FILENAME)
+
+        elif choice == "8":
             print("Goodbye!")
             break
 
