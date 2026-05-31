@@ -18,7 +18,7 @@ def get_admin():
     return  {"role": "admin", "access": "full"}
 
 @app.get("/users/{user_id}")
-def get_user(user_id: int):
+def get_user(user_id):
     """
     Gets a number from the URL and returns information about a user with that number.
     """
