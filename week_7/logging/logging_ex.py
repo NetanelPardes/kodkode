@@ -54,7 +54,7 @@ print('ERROR: payment failed')
 import logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s | %(message)s')
 logger = logging.getLogger("payments")
-# logger.info('Application started')
+logger.info('Application started')
 
 #ex6
 def process_payment(user_id, amount):
@@ -66,9 +66,9 @@ def process_payment(user_id, amount):
         logger.warning('WARNING: Large transaction')
     logger.info("Payment of %s completed for user %s", amount ,user_id)
 
-# process_payment(1234,50)
-# process_payment(1234,-1)
-# process_payment(1234,1000001)
+process_payment(1234,50)
+process_payment(1234,-1)
+process_payment(1234,1000001)
 
 #ex7
 # logging.basicConfig(level=logging.INFO, format='%(levelname)s | %(message)s', filename="app.log")
@@ -87,9 +87,9 @@ def payment(user_id, amount):
          logger.warning("Your place is about to be full.")
     logger.info("payment done for %s" ,user_id)
 
-# payment(1234,14)
-# payment(1234,501)
-# payment(1234,-3)
+payment(1234,14)
+payment(1234,501)
+payment(1234,-3)
 
 #ex8
 def read_config(filepath):
@@ -107,7 +107,7 @@ def read_config(filepath):
         logger.exception("the file not found")
 
         return None
-# read_config("app.log")
+read_config("app.log")
 # read_config("app1.log")
 
 #ex9
@@ -153,8 +153,8 @@ def register_user(email, password, age):
     logger.info("User registration validated | email=%s | password_provided=%s",email,bool(password))
     logger.info("User registration completed successfully | email=%s", email)
 
-# register_user("sendi8475@gamil.com" , 1234 , 12)
-# register_user("sendi8475@gamil.com" , 1234 , 19)
+register_user("sendi8475@gamil.com" , 1234 , 12)
+register_user("sendi8475@gamil.com" , 1234 , 19)
 
 #ex13
 from logging_setup import get_logger
