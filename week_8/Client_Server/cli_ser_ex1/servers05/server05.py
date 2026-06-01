@@ -47,7 +47,7 @@ def get_student(student_id):
     Returns the specific student
     """
     if student_id in grades:
-        return f"The student {grades[student_id]['name']}'s grade is {grades[student_id]['grade']}."
+            return f"The student {grades[student_id]['name']}'s grade is {grades[student_id]['grade']}."
     return f"There is no student whose number is {student_id}."
 
 
