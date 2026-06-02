@@ -1,0 +1,7 @@
+Method,Description,Success Response ,Example
+GET,Get all todos,200 OK,@app.get("/todos")
+GET,Get one todo by id,200 OK,@app.get("/todos/{todo_id}")
+POST,Create a new todo,201 Created,@app.post("/todos")
+PUT,Replace an existing todo,200 OK,@app.put("/todos/{todo_id}")
+PATCH,Update part of a todo,200 OK,@app.patch("/todos/{todo_id}")
+DELETE,Delete a todo by id,204 No Content,@app.delete("/todos/{todo_id}")
