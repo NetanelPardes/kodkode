@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI ,HTTPException
 import db_messages
 import uvicorn
 
@@ -18,16 +18,16 @@ def get_all_messages():
     message = db_messages.get_all_messages()
     return {"message": message}
 
-@app.post("/new_messages")
-def new_message(new_message:dict):
-    new_id = db_messages.add_new_message(new_message)
-    return {"status": "created", "id": new_id}
-
-
 @app.get("/messages/{classification}")
 def get_all_messages_by_classification(classification:str):
     messages_by_classification = db_messages.get_all_messages_by_classification(classification)
     return {f"{classification} messages":messages_by_classification}
+
+@app.post("/messages", status_code=201)
+def new_message(new_message:dict):
+    new_id = db_messages.create_message(new_message['unit'], new_message['classification'],new_message['content'], new_message[' source'])
+    return {"status": "created", "id": new_id}
+
 
 
 if __name__ == "__main__":
