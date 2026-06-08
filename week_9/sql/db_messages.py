@@ -27,29 +27,6 @@ def get_all_messages():
     conn.close()
     return rows
 
-def add_new_message(new_message):
-    conn = get_connection()
-    cursor = conn.cursor()
-
-    query = """  
-    INSERT INTO messages(unit, classification,content,source)
-    VALUES(%s,%s,%s,%s)
-    """
-
-    value = (new_message["unit"],new_message["classification"],new_message["content"],new_message["source"])
-    
-
-    cursor.execute(query ,value)
-
-    conn.commit()
-
-    new_id = cursor.lastrowid
-
-    cursor.close()
-    conn.close()
-
-    return new_id
-
 def get_all_messages_by_classification(classification):
     result = []
     conn = get_connection()
@@ -62,3 +39,56 @@ def get_all_messages_by_classification(classification):
     cursor.close()
     conn.close()
     return result
+
+def get_message_by_id(message_id: int) -> dict | None:
+    result = {}
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM messages")
+    rows = cursor.fetchall()
+    for row in rows:
+        if row['id'] == message_id:
+            result = row
+    cursor.close()
+    conn.close()
+    return result
+    
+def create_message(unit: str, classification: str, content: str, source:str | None) -> int:
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    query = """  
+    INSERT INTO messages(unit, classification,content,source)
+    VALUES(%s,%s,%s,%s)
+    """
+    value = (unit,classification,content,source)
+    cursor.execute(query ,value)
+    conn.commit()
+    new_id = cursor.lastrowid
+    cursor.close()
+    conn.close()
+    return new_id
+
+def update_message(message_id: int, data: dict) -> bool:
+    conn = get_connection()
+    cursor = conn.cursor()
+    set_parts = [f"{key} = %s" for key in data.keys()]
+    set_cluse = ", ".join(set_parts)
+    sql = f"UPDATE messages  set {set_cluse} where id = %s"
+    values = list(data.values()) + [message_id]
+    cursor.execute(sql,values)
+    conn.commit()
+    changed = cursor.rowcount > 0
+    cursor.close()
+    conn.close()
+    return changed
+
+def delete_message(message_id: int) -> bool:
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE feom mesagges where id = %s" , (message_id,))
+    conn.commit()
+    deleted = cursor.rowcount > 0
+    cursor.close()
+    conn.close()
+    return deleted

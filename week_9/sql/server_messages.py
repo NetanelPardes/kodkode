@@ -23,6 +23,7 @@ def new_message(new_message:dict):
     new_id = db_messages.add_new_message(new_message)
     return {"status": "created", "id": new_id}
 
+
 @app.get("/messages/{classification}")
 def get_all_messages_by_classification(classification:str):
     messages_by_classification = db_messages.get_all_messages_by_classification(classification)
