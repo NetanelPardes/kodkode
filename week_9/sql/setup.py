@@ -17,7 +17,7 @@ create_table_sql =  """
 CREATE TABLE IF NOT EXISTS soldiers (
 id INT PRIMARY KEY AUTO_INCREMENT,
 name VARCHAR(100) NOT NULL,
-`rank` VARCHAR(50),
+soldier_rank VARCHAR(50),
 unit VARCHAR(100),
 active BOOLEAN DEFAULT TRUE
 )
