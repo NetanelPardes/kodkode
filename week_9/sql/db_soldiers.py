@@ -34,3 +34,23 @@ def crate_soldier(name:str,soldier_rank:str,unit:str, active :bool):
     conn.close()
 
     return new_id
+
+
+def update_soldier(sildier_id, new_data) -> bool:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    set_parts = [f"{key} = %s" for key in new_data.keys()]
+    set_clause = ", ".join(set_parts)
+
+    sql = f"UPDATE soldiers set {set_clause} where id = %s"
+    values = list(new_data.values()) + [sildier_id]
+
+    cursor.execute(sql,values)
+    conn.commit()
+
+    changed = cursor.rowcount > 0
+
+    cursor.close()
+    conn.close()
+    return changed
