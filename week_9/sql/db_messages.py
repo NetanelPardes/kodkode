@@ -86,7 +86,7 @@ def update_message(message_id: int, data: dict) -> bool:
 def delete_message(message_id: int) -> bool:
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE feom mesagges where id = %s" , (message_id,))
+    cursor.execute("DELETE from messages where id = %s" , (message_id,))
     conn.commit()
     deleted = cursor.rowcount > 0
     cursor.close()

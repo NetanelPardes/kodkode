@@ -46,7 +46,7 @@ def get_all_messages_by_classification(classification:str):
 
 @app.post("/messages", status_code=201)
 def new_message(new_message:dict):
-    new_id = db_messages.create_message(new_message['unit'], new_message['classification'],new_message['content'], new_message[' source'])
+    new_id = db_messages.create_message(new_message['unit'], new_message['classification'],new_message['content'], new_message['source'])
     return {"status": "created", "id": new_id}
 
 
