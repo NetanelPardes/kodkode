@@ -146,3 +146,67 @@ def get_by_id(soldier_id: int) -> dict | None:
     conn.close()
 
     return row
+
+def get_names_and_ranks() -> list:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT id, name, soldier_rank FROM soldiers")
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
+
+def get_by_rank(rank: str) -> list:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute(
+    "SELECT * FROM soldiers WHERE soldier_rank = %s",(rank,))
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
+
+def search_by_name(term: str) -> list:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    # % signs go inside the value string, not in the SQL template
+    cursor.execute(
+    "SELECT * FROM soldiers WHERE name LIKE %s",(f"%{term}%",))
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
+
+def get_active_sorted(order: str = "asc") -> list:
+# Validate order to prevent SQL injection — it goes into the querydirectly
+    if order.lower() not in ("asc", "desc"):
+        order = "asc"
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    # ORDER BY direction cannot be a %s parameter — must be inserted asstring
+    cursor.execute(f"SELECT * FROM soldiers WHERE active = TRUE ORDER BY name {order.upper()}")
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
+
+
+def get_distinct_units() -> list:
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT DISTINCT unit FROM soldiers")
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    # fetchall returns tuples: [('8200',), ('9900',)]
+    return [row[0] for row in rows]
+
+
+def get_with_missing_rank() -> list:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM soldiers WHERE soldier_rank IS NULL")
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
