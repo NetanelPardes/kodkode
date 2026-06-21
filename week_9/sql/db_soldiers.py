@@ -159,8 +159,7 @@ def get_names_and_ranks() -> list:
 def get_by_rank(rank: str) -> list:
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute(
-    "SELECT * FROM soldiers WHERE soldier_rank = %s",(rank,))
+    cursor.execute("SELECT * FROM soldiers WHERE soldier_rank = %s",(rank,))
     rows = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -170,8 +169,7 @@ def search_by_name(term: str) -> list:
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
     # % signs go inside the value string, not in the SQL template
-    cursor.execute(
-    "SELECT * FROM soldiers WHERE name LIKE %s",(f"%{term}%",))
+    cursor.execute("SELECT * FROM soldiers WHERE name LIKE %s",(f"%{term}%",))
     rows = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -210,3 +208,64 @@ def get_with_missing_rank() -> list:
     cursor.close()
     conn.close()
     return rows
+
+def count_by_unit() -> list:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+    SELECT
+    unit,
+    COUNT(*) AS total
+    FROM soldiers
+    GROUP BY unit
+    ORDER BY total DESC
+    """)
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
+
+def get_summary() -> dict:
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT COUNT(*) AS total FROM soldiers")
+    total = cursor.fetchone()["total"]
+    cursor.execute("SELECT COUNT(*) AS active FROM soldiers WHERE active =TRUE")
+    active = cursor.fetchone()["active"]
+    cursor.close()
+    conn.close()
+    return {"total": total, "active": active, "inactive": total - active}
+
+def get_units_with_multiple_soldiers():
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+                   SELECT unit, COUNT(*) AS unit_count 
+                   FROM soldiers  
+                   GROUP BY unit 
+                   HAVING unit_count > 0
+                   """)
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows
+
+def get_most_soldiers_unit():
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+                   SELECT  `unit`, COUNT(*) AS unit_count
+                   FROM soldiers  
+                   GROUP BY unit
+                   ORDER BY unit_count DESC
+                   """
+                   )
+    rows = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return rows[0]
+
+if __name__ == "__main__":
+    #print(count_by_unit())
+    #print(get_summary() )
+    print(get_with_missing_rank())
