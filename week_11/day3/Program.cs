@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.Metrics;
 using System.Xml.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace day3;
 enum Status { Friendly, Hostile, Unidentified }
 class IntellIgence
@@ -44,9 +46,10 @@ class IntellIgence
         }
        
     }
+    
     static void addMessage( List<int> id , List<Status> status , List<double?> signal)
     {
-        Console.WriteLine("enter the new id");
+        Console.Write("enter the new id: ");
         string myID = Console.ReadLine();
         int newId;
         if (!int.TryParse(myID, out newId))
@@ -59,7 +62,12 @@ class IntellIgence
             Console.WriteLine("this id exixts");
             return;
         }
-        Console.WriteLine("enter the new status (Friendly, Hostile, Unidentified)");
+        if (newId < 1)
+        {
+            Console.WriteLine("It is not allowed to enter a negative number.");
+            return;
+        }
+        Console.Write("enter the new status (Friendly, Hostile, Unidentified): ");
         string myStatus = Console.ReadLine();
         Status newStatus;
         if (!Status.TryParse(myStatus, out newStatus))
@@ -67,16 +75,23 @@ class IntellIgence
             Console.WriteLine("this is not a status");
             return;
         }
-        Console.WriteLine("enter the new signal");
+        Console.Write("enter the new signal: ");
         string mySignal = Console.ReadLine();
         double? newSignal;
 
         newSignal = null;
+        
         if (!string.IsNullOrWhiteSpace(mySignal))
         {
+            
             if (!double.TryParse(mySignal, out double newSignal2))
             {
                 Console.WriteLine("this is not a number");
+                return;
+            }
+            if (newSignal2 < 0)
+            {
+                Console.WriteLine("It is not allowed to enter a negative number.");
                 return;
             }
             newSignal = newSignal2;
@@ -87,7 +102,7 @@ class IntellIgence
     }
     static void update(List<int> id, List<Status> status, List<double?> signal)
     {
-        Console.WriteLine("enter the new id");
+        Console.Write("enter the new id: ");
         string myID = Console.ReadLine();
         int newId;
         if (!int.TryParse(myID, out newId))
@@ -102,7 +117,7 @@ class IntellIgence
         }
         int index = findIndex(id, newId);
 
-        Console.WriteLine("enter the new signal");
+        Console.Write("enter the new signal: ");
         string mySignal = Console.ReadLine();
         double? newSignal;
 
@@ -112,6 +127,11 @@ class IntellIgence
             if (!double.TryParse(mySignal, out double newSignal2))
             {
                 Console.WriteLine("this is not a number");
+                return;
+            }
+            if (newSignal2 < 0)
+            {
+                Console.WriteLine("It is not allowed to enter a negative number.");
                 return;
             }
             newSignal = newSignal2;
@@ -134,7 +154,9 @@ class IntellIgence
     {
         for(int i = 0; i < id.Count; i++)
         {
-            Console.WriteLine($"Under radio number {id[i]} with status {status[i]} transmitting at frequency strength {signal[i]}");
+            string signalText = signal[i] == null ? "unknown" : signal[i].ToString();
+
+            Console.WriteLine($"Source {id[i]} | Status: {status[i]} | Signal strength: {signalText}");
         }
     }
 }
