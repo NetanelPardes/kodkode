@@ -33,12 +33,20 @@ namespace day_1
     }
     public class FileImageStore
     {
-        public void SaveToFile( string path, string text)
+        public void SaveToFile(string path, string text)
         {
             File.AppendAllText(path, text);
             FileInfo file = new FileInfo(path);
             file.IsReadOnly = false;
         }
+    }
+    public interface IImageOps
+    {
+        int Score();
+
+        void Retask();
+
+        void CalibrateThermal();
     }
     public abstract class ImageMetadataManager
     {
@@ -58,14 +66,14 @@ namespace day_1
             {
                 throw new ArgumentOutOfRangeException("Cloud cover must be between 0 and 100.");
             }
-                Id = id;
+            Id = id;
             CloudCover = cloudCover;
         }
         public abstract int GetPriority();
         public abstract string GetSensorName();
     }
 
-    public class SarImage : ImageMetadataManager
+    public class SarImage : ImageMetadataManager, IImageOps
     {
         public SarImage(int id, double cloudCover) : base(id, cloudCover)
         {
@@ -77,6 +85,24 @@ namespace day_1
         public override string GetSensorName()
         {
             return "SAR";
+        }
+        public int Score()
+        {
+            return GetPriority() - (int)CloudCover;
+        }
+
+        public void Retask()
+        {
+            throw new NotImplementedException(
+                "SAR images cannot be retasked."
+            );
+        }
+
+        public void CalibrateThermal()
+        {
+            throw new NotImplementedException(
+                "SAR images do not have a thermal band."
+            );
         }
     }
     public class EoImage : ImageMetadataManager
@@ -109,6 +135,25 @@ namespace day_1
 
 
     }
+    public class QuickLookImage : ImageMetadataManager
+    {
+        public QuickLookImage(int id, double cloudCover)
+            : base(id, cloudCover)
+        {
+        }
+
+        public override int GetPriority()
+        {
+            throw new InvalidOperationException(
+                "Quick-look images are not scored."
+            );
+        }
+
+        public override string GetSensorName()
+        {
+            return "Quick Look";
+        }
+    }
     public class Repository<T> where T : ImageMetadataManager
     {
         private readonly List<T> _items;
@@ -137,50 +182,100 @@ namespace day_1
     {
         public static void Main()
         {
-            Repository<ImageMetadataManager> repository = new Repository<ImageMetadataManager>();
+            Repository<ImageMetadataManager> repository =
+                new Repository<ImageMetadataManager>();
+
+            repository.Add(new SarImage(1, 20));
+            repository.Add(new EoImage(2, 30));
+            repository.Add(new IrImage(3, 40));
+            repository.Add(new SarImage(4, 50));
+            repository.Add(new EoImage(5, 60));
+            repository.Add(new IrImage(6, 70));
+            repository.Add(new SarImage(7, 80));
+            repository.Add(new EoImage(8, 85));
+            repository.Add(new IrImage(9, 43));
+
+
+            repository.Add(new QuickLookImage(10, 10));
+
+            CalcScore scoreCalculator = new CalcScore();
+            ImageFormatter formatter = new ImageFormatter();
+
             try
             {
-                repository.Add(new SarImage(1, 20));
-                repository.Add(new EoImage(2, 30));
-                repository.Add(new IrImage(3, 40));
-                repository.Add(new SarImage(4, 50));
-                repository.Add(new EoImage(5, 60));
-                repository.Add(new IrImage(6, 70));
-                repository.Add(new SarImage(7, 80));
-                repository.Add(new EoImage(8, 85));
-                repository.Add(new IrImage(9, 43));
-
-                CalcScore Score = new CalcScore();
-                ImageFormatter formatter = new ImageFormatter();
-
                 int totalScore = 0;
-                foreach (var item in repository.GetAll())
+
+                foreach (ImageMetadataManager item in repository.GetAll())
                 {
-                    int score = Score.Score(item);
+                    int score = scoreCalculator.Score(item);
+
                     Console.WriteLine(formatter.Format(item, score));
+
                     totalScore += score;
                 }
-                Console.WriteLine($"total score : {totalScore}");
 
-                FileImageStore save = new FileImageStore();
-                foreach (var item in repository.GetAll())
-                {
-                    int score = Score.Score(item);
-                    string format = formatter.Format(item, score);
-                    save.SaveToFile("result.txt", format + "\n");
-                }
-                repository.Add(new SarImage(1, 120));
+                Console.WriteLine($"Total score: {totalScore}");
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"The scoring loop crashed: {ex.Message}");
+            }
+
+            Console.WriteLine();
+
+            SarImage sarImage = new SarImage(11, 25);
+
+            try
+            {
+                sarImage.Retask();
+            }
+            catch (NotImplementedException ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                sarImage.CalibrateThermal();
+            }
+            catch (NotImplementedException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine();
+
+            try
+            {
+                repository.Add(new SarImage(12, 150));
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"bug{ex}");
+            }
+
+            Console.WriteLine($"Images stored: {repository.Count()}");
+
+            try
+            {
+                int totalScore = 0;
+
+                foreach (ImageMetadataManager item in repository.GetAll())
+                {
+                    int score = scoreCalculator.Score(item);
+
+                    Console.WriteLine(formatter.Format(item, score));
+
+                    totalScore += score;
+                }
+
+                Console.WriteLine($"Total score: {totalScore}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"The scoring loop crashed: {ex.Message}");
             }
         }
-
     }
 }
 
