@@ -40,11 +40,16 @@ namespace day_1
             file.IsReadOnly = false;
         }
     }
-    public interface IImageOps
+    public interface IScoreable
     {
         int Score();
-
+    }
+    public interface IRetaskable
+    {
         void Retask();
+    }
+    public interface ICalibrateThermal
+    {
 
         void CalibrateThermal();
     }
@@ -73,7 +78,7 @@ namespace day_1
         public abstract string GetSensorName();
     }
 
-    public class SarImage : ImageMetadataManager, IImageOps
+    public class SarImage : ImageMetadataManager, IScoreable
     {
         public SarImage(int id, double cloudCover) : base(id, cloudCover)
         {
@@ -91,19 +96,7 @@ namespace day_1
             return GetPriority() - (int)CloudCover;
         }
 
-        public void Retask()
-        {
-            throw new NotImplementedException(
-                "SAR images cannot be retasked."
-            );
-        }
 
-        public void CalibrateThermal()
-        {
-            throw new NotImplementedException(
-                "SAR images do not have a thermal band."
-            );
-        }
     }
     public class EoImage : ImageMetadataManager
     {
@@ -144,9 +137,7 @@ namespace day_1
 
         public override int GetPriority()
         {
-            throw new InvalidOperationException(
-                "Quick-look images are not scored."
-            );
+            return 0;
         }
 
         public override string GetSensorName()
@@ -224,26 +215,6 @@ namespace day_1
             Console.WriteLine();
 
             SarImage sarImage = new SarImage(11, 25);
-
-            try
-            {
-                sarImage.Retask();
-            }
-            catch (NotImplementedException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            try
-            {
-                sarImage.CalibrateThermal();
-            }
-            catch (NotImplementedException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            Console.WriteLine();
 
             try
             {
