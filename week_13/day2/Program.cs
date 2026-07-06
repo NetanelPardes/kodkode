@@ -167,7 +167,7 @@ namespace day_1
                 {
                     int score = Score.Score(item);
                     string format = formatter.Format(item, score);
-                    save.SaveToFile("result.txt", format );
+                    save.SaveToFile("result.txt", format + "\n");
                 }
                 repository.Add(new SarImage(1, 120));
             }
