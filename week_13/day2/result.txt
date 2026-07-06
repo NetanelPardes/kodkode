@@ -1,0 +1,9 @@
+Image 1: 20% cloud SAR, Score: 80
+Image 2: 30% cloud EO, Score: 30
+Image 3: 40% cloud IR, Score: 0
+Image 4: 50% cloud SAR, Score: 50
+Image 5: 60% cloud EO, Score: 0
+Image 6: 70% cloud IR, Score: -30
+Image 7: 80% cloud SAR, Score: 20
+Image 8: 85% cloud EO, Score: -25
+Image 9: 43% cloud IR, Score: -3
