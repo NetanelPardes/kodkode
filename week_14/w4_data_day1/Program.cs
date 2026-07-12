@@ -87,6 +87,10 @@ namespace w4_data_day1
                 {
                     Console.WriteLine(ex.Message);
                 }
+                catch(InvalidReportException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
             return reports;
         }
@@ -95,7 +99,6 @@ namespace w4_data_day1
         {
             var opts = new JsonSerializerOptions { WriteIndented = true };
             string json = JsonSerializer.Serialize(reports, opts);
-            Console.WriteLine(json);
             File.WriteAllText("reports.json", json);
         }
 
@@ -115,17 +118,19 @@ namespace w4_data_day1
                 {
                     Console.WriteLine($"id: {rep.Id} || category: {rep.Category} || priority: {rep.Priority}");
                 }
+                string b = File.ReadAllText("w4d1_reports_corrupted1.json");
                 string a = File.ReadAllText("w4d1_reports_corrupted.json");
                 List<Report> loaded1 = JsonSerializer.Deserialize<List<Report>>(a) ?? new();
+
 
             }
             catch(FileNotFoundException ex)
             {
-                Console.WriteLine($"file not exist {ex.FileName}");
+                Console.WriteLine($"file {Path.GetFileName(ex.FileName)} not exist");
             }
-            catch(JsonException ex)
+            catch(JsonException)
             {
-                Console.WriteLine($"file json Corrupted");
+                Console.WriteLine("file json Corrupted");
             }
             finally
             {
