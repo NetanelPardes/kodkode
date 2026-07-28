@@ -1,0 +1,9 @@
+# docker-compose.yml - build from the local Dockerfile, do not pull
+services:
+  day1:
+    build: . # build the Dockerfile in this folder (replaces image:)
+    container_name: day1-service
+    ports:
+      - "8080:8080" # "HOST:CONTAINER" -> 8080 external (curl), 8080internal (ASP.NET)
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
